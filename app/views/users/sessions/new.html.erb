@@ -1,0 +1,44 @@
+<h2 style="text-align: center;">Log in</h2>
+
+<div class="row">
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-4">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <!-- Email input -->
+      <div class="form-outline mb-4">
+        <label class="form-label" for="email">Email address</label>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder:'Please enter Email-ID' %>
+      </div>
+
+      <!-- Password input -->
+      <div class="form-outline mb-4" style="margin-top: 20px;margin-bottom: 10px;">
+        <label class="form-label" for="password">Password</label>
+        <%= f.password_field :password, autocomplete: "current-password", class:"form-control", placeholder:'Please enter Password' %>
+      </div>
+
+      <!-- 2 column grid layout for inline styling -->
+      <div class="row mb-4" style="margin-left: 0px;margin-bottom: 10px;margin-top: 10px;">
+        <div class="col d-flex justify-content-center">
+          <!-- Checkbox -->
+          <div class="form-check">
+            <% if devise_mapping.rememberable? %>
+              <div class="field">
+                <%= f.check_box :remember_me, class:"form-check-input" %>
+                <%= f.label :remember_me, class:"form-check-label" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <%= f.submit "Log in", class:"btn btn-primary btn-block mb-4" %>
+      <!-- Submit button -->
+    <% end %>
+
+    <%= render "users/shared/links" %>
+  </div>
+  </div>
+  <div class="col-md-4">
+  </div>
+</div>
+

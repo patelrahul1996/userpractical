@@ -1,0 +1,40 @@
+<div style="float: left"><h1>Dashboard</h1></div>
+<div style="float: right; padding: 20px;">
+<% if current_user.is_admin? %>
+  <%= link_to "New Company", new_company_path %>&nbsp;&nbsp;&nbsp;
+  <%= link_to "Custom Fields", companycustomfield_index_path %>&nbsp;&nbsp;&nbsp;
+<% end %>
+  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">SR No</th>
+      <th scope="col">Company</th>
+      <th scope="col">Custom Field</th>
+      <th scope="col">User</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% i=0 %>
+  <% @company.each do |data| %>
+    <% if data.company_custom_fields.present? %>
+      <% data.company_custom_fields.each do |record| %>
+          <tr>
+              <th scope="row"><%= i += 1 %></th>
+              <td><%= data.company_name%></td>
+              <td><%= record.custom_field%></td>
+              <td><%= User.find_by(company_id: data.id)&.name %></td>
+          </tr>
+      <% end %>
+    <% else %>
+        <tr>
+            <th scope="row"><%= i += 1 %></th>
+            <td><%= data.company_name%></td>
+            <td>N/A</td>
+            <td><%= User.find_by(company_id: data.id)&.name %></td>
+        </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>
