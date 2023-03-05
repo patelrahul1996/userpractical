@@ -28,23 +28,18 @@ class CompanycustomfieldController < ApplicationController
     end
 
     def update
-        @customfield =  CompanyCustomField.find(params[:company_custom_field][:id])
+      custom = params[:company_custom_field]
+      CompanyCustomField.where('id = ?',custom[:id]).update_all(custom_field: custom[:custom_field],company_id: custom[:company_id])
         respond_to do |format|
-            debugger
-          if @customfield.update(companycustomfield_params)
-            format.html { redirect_to companycustomfield_index_path, notice: "Task was successfully updated." }
+          
+            format.html { redirect_to companycustomfield_index_path, notice: "Custome Field was successfully updated." }
             format.json { render :index, status: :ok, location: @customfield }
-          else
-            format.html { render :edit, status: :unprocessable_entity }
-            format.json { render json: @customfield.errors, status: :unprocessable_entity }
-          end
         end
       end
     
     private
     # Only allow a list of trusted parameters through.
     def companycustomfield_params
-        debugger
       params.require(:company_custom_field).permit(:id, :custom_field, :company_id)
     end
 end

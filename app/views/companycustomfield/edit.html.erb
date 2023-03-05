@@ -1,5 +1,5 @@
 <h2 style="text-align: center;">Edit Company Custom Field </h2>
-
+&nbsp;&nbsp;&nbsp;<%= link_to "Back", companycustomfield_index_path %>&nbsp;&nbsp;&nbsp;
 <div class="row">
   <div class="col-md-4">
   </div>
@@ -13,9 +13,9 @@
   
   
     <div class="form-outline mb-4">
-      <label class="form-label" for="form2Example1"  style="margin-top: 10px;">Custom_Field_Name</label>
-        <%= f.text_field :custom_field, autofocus: true, autocomplete: "custom_field", class:"form-control", placeholder:'Please enter Company_State' %>
-      </div>
+      <label class="form-label" for="form2Example1"  style="margin-top: 10px;">Custom Field Name</label>
+      <%= f.text_field :custom_field, autofocus: true, autocomplete: "custom_field", class:"form-control", placeholder:'Please enter Company_State' %>
+    </div>
   
     <!-- 2 column grid layout for inline styling -->
     <div class="row mb-4">

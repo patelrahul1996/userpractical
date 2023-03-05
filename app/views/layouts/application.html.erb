@@ -12,5 +12,14 @@
 
   <body>
     <%= yield %>
+    <% if !notice.nil? %>
+      <div class="alert alert-success" id="successMessage">
+        <%= notice %>
+      </div>
+    <% end %>
+    
   </body>
+
+  <script>$("#successMessage").fadeOut(6000);</script>
+
 </html>

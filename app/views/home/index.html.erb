@@ -1,10 +1,10 @@
 <div style="float: left"><h1>Dashboard</h1></div>
 <div style="float: right; padding: 20px;">
-<% if current_user.is_admin? %>
-  <%= link_to "New Company", new_company_path %>&nbsp;&nbsp;&nbsp;
-  <%= link_to "Custom Fields", companycustomfield_index_path %>&nbsp;&nbsp;&nbsp;
+<% if current_user.is_admin %>
+  <%= link_to "New Company", new_company_path, style:"font-size: 15px;" %>&nbsp;&nbsp;&nbsp;
+  <%= link_to "Custom Fields", companycustomfield_index_path, style:"font-size: 15px;" %>&nbsp;&nbsp;&nbsp;
 <% end %>
-  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+  <%= link_to "Sign out", destroy_user_session_path, :method => :delete, style:"font-size: 15px;" %>
 </div>
 <table class="table table-striped">
   <thead>
